@@ -53,7 +53,7 @@ for user in logins:
 def random_char(y):
     return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
-def register():
+def register(invite_linka):
     global ThreadBB
     global list_success
     global list_error
@@ -121,7 +121,7 @@ def register():
                     "email": email,
                     "username": username,
                     "password": password,
-                    "invite": "JvnwUudv",
+                    "invite": invite_linka,
                     "consent": "true",
                     "date_of_birth": "1991-04-06",
                     "gift_code_sku_id": "",
@@ -154,8 +154,9 @@ def register():
 
 
 if __name__ == '__main__':
+    invite_linka = input("Invite Code (Example: DuSPb6fa): ")
     while True:
         if ThreadBB < ThreadAA:
-            t = threading.Thread(target=register)
+            t = threading.Thread(target=register, arg=[invite_linka])
             t.start()
             time.sleep(0.001)
