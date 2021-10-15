@@ -117,7 +117,7 @@ def register(invite_linka):
                 f1.write(f"{token2}\n")
                 f1.close()
                 time = datetime.datetime.now().strftime("%H:%M:%S")
-                print(f"{bcolors.GREEN}[{str(time)}] TOKEN : {token2} ({str(username)} {str(email)}:{str(password)}){bcolors.RESET}")
+                print(f"{bcolors.GREEN}[{str(time)}] TOKEN : {token2}{bcolors.RESET}")
                 list_success +=1
                 break
             elif registerreq.status_code == 400:
