@@ -13,6 +13,7 @@ import json
 import re
 from bs4 import BeautifulSoup
 import requests
+import httpx
 from hcapbypass import bypass
 import random
 
@@ -130,7 +131,7 @@ def register():
         list_error +=1
 
     try:
-        registerreq = requests.post("https://discord.com/api/v9/auth/register", proxies={"https": "http://" + str(next(ProxyPool))}, headers=header3, json=payload, timeout=15)
+        registerreq = httpx.post("https://discord.com/api/v9/auth/register", proxies={"https://" : "http://"+ str(next(ProxyPool)}, headers=header3, json=payload, timeout=15)
         if registerreq.status_code == 201:
             token = json.loads(registerreq.text)
             token2 = token['token']
