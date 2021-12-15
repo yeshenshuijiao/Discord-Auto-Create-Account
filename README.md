@@ -1,6 +1,7 @@
 # Discord-Auto-Create-Account
 
 IT NOT WORK HCAPTCHA BYPASS IS NOT WORKING NOW.
+
 TRY: https://github.com/aw1875/puppeteer-hcaptcha for solve hcaptcha
 
 
