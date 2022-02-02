@@ -110,9 +110,9 @@ def N_Data(req) -> str:
             #print(e)
             return False
 
-def REQ_Data(host, sitekey, proxy):
+def REQ_Data(host, sitekey):
         try:
-            r = requests.get(f"https://hcaptcha.com/checksiteconfig?host={host}&sitekey={sitekey}&sc=1&swa=1", headers=headers, proxies={"https": f"http://{proxy}"}, timeout=15)
+            r = requests.get(f"https://hcaptcha.com/checksiteconfig?host={host}&sitekey={sitekey}&sc=1&swa=1", headers=headers, timeout=15)
             if r.json()["pass"]:
                 return r.json()["c"]
             else:
@@ -120,7 +120,7 @@ def REQ_Data(host, sitekey, proxy):
         except :
             return False
 
-def Get_Captcha(host, sitekey, n, req, proxy):
+def Get_Captcha(host, sitekey, n, req):
         try:
             json = {
                 "sitekey": sitekey,
@@ -151,18 +151,17 @@ def Get_Captcha(host, sitekey, n, req, proxy):
 
             }
             cookies = {"hc_accessibility": "VdfzG99DjOoLGlqlwSuIjToEryE7Xcx0z4lPWbLBLLCqCfpG9z2X5J+BwkOMrjbNFUKB60TAPpTsW7pzcBQIu0vztY6DQDLzZqpvKUKjyx9RxILDx8wCXq/z1OLjRPib7Cu4t+b4gEaoTbGD240IIXCRN33czAf3d4nr4HxcUsedKNT/cMp4xDo93HBxiSHYMBg3HvE4M3frwKUlSEDrSVG5Bg5FqxlokBLSIhWuQ2SAmiwiOwGLpvknsZHClqPnaI6KA3iyhMrDOO/f8fFxTpGiik3xqlfpKzc783UKVR8Epwbhdeq7bfhNKQMnZkG4Ac9j5PFHgA1GePaKIETUuxVyABISiA4lEg5B0HuEGJUd5Rxl2qlv/AvFAtyqwYU8XUgMIML35IMUXtr4CVeihSLhqeV5+IBOHakiD54vu0IwuEi/BjYh+jkcks4=1qyF568EcE9myCKI"}
-            r = requests.post(f"https://hcaptcha.com/getcaptcha?s={sitekey}",cookies=cookies, data=data, headers=headers, proxies={"https": f"http://{proxy}"}, timeout=15)
+            r = requests.post(f"https://hcaptcha.com/getcaptcha?s={sitekey}",cookies=cookies, data=data, headers=headers, timeout=15)
             return r.json()
         except Exception as e:
-            #print(e)
             return False
 
-def bypass(sitekey, host, proxy):
+def bypass(sitekey, host):
     try :
-        req = REQ_Data(sitekey=sitekey, proxy=proxy ,host=host)
+        req = REQ_Data(sitekey=sitekey, host=host)
         req["type"] = "hsl"
         n = N_Data(req["req"])
-        res = Get_Captcha(sitekey=sitekey, proxy=proxy, host=host, n=n, req=req)
+        res = Get_Captcha(sitekey=sitekey, host=host, n=n, req=req)
         if "generated_pass_UUID" in res:
             captcha = res["generated_pass_UUID"]
             return captcha
