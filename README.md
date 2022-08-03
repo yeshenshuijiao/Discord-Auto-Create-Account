@@ -2,7 +2,11 @@
 
 
 
-now 02/02/22 it working again!
+if it not working you want to change cookies
+1. goto https://www.hcaptcha.com/accessibility
+2. get cookies
+3. then copy and paste to hcapbypass.py on lines 153
+
 
 ![image](https://user-images.githubusercontent.com/59871949/136517164-b084c267-1c2b-481d-85de-150c0f9a1a8e.png)
 
