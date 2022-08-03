@@ -2,7 +2,7 @@
 
 
 
-if it not working you want to change cookies
+if it not working you need to change cookies
 1. goto https://www.hcaptcha.com/accessibility
 2. get cookies
 3. then copy and paste to hcapbypass.py on lines 153
